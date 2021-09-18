@@ -1,0 +1,5 @@
+**/__pycache__
+processed/checkpoints/**
+processed/data/**
+processed/evaluation/**
+data/glove/**
