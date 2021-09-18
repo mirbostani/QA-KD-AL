@@ -401,7 +401,7 @@ class Dataset:
 
             t.set_description(self.get_memory_stat())
 
-            # Extract batch examples from `last_i` included to `i+1` excluded.
+            # Extract batch examples from `last_i` (included) to `i+1` (excluded).
             # Next batch examples' start index will be `last_i=i+1`.
             batch_token_ids = all_token_ids[last_i:i+1]
             batch_segment_ids = all_segment_ids[last_i:i+1]
@@ -425,8 +425,8 @@ class Dataset:
             for j in range(0, bs):
                 # sep_index holds the first [SEP] index and last_sep_index holds
                 # the last [SEP] index. They are used to extract scores and tokens
-                # of the context. That's because output of the BERT model tokens
-                # is as follows. BERT model only supports maximum 512 tokens; so
+                # of the context. That's because the output of the BERT model tokens
+                # is as follows. BERT model only supports maximum of 512 tokens; so
                 # there might be a truncation cutting the middle of the context.
                 # [CLS]<question>[SEP]<context>[SEP][PAD]...[PAD]
                 sep_index = all_sep_index[last_i+j]
@@ -481,13 +481,13 @@ class Dataset:
                 # next_student_token = all_student_tokens[i][j+1].lower() if j+1 < len(all_student_tokens[i]) else None
 
                 # j iterates over student tokens until _k reaches all_tokens[i]
-                # which is a way of implementing trunc_max_len limitation. Do not
+                # which is a way of implementing the trunc_max_len limitation. Do not
                 # use trunc_max_len directly to limit j progress because we extract
-                # <context> section of BERT model input, so <context> might be
+                # the <context> section of the BERT model input, so <context> might be
                 # available inside all_tokens[i] completely or truncated from the
                 # right side. Here we use all_tokens[i] length to put scores at
                 # the beginning of the start_scores and end_scores. The rest of
-                # the are def_val.
+                # them are def_val.
                 for k in range(_k, len(all_tokens[i])):
                     teacher_token = all_tokens[i][k]
                     # next_teacher_token = all_tokens[i][k+1] if k+1 < len(all_tokens[i]) else None
@@ -500,7 +500,7 @@ class Dataset:
                         student_token, debug=debug).lower()
                     teacher_token = teacher_token.lower()
 
-                    # Skip current student token when it is a white spaces or an
+                    # Skip current student token when it is a white space or an
                     # escaped character
                     # Student tokenizer preserves all white spaces while teacher
                     # tokenizer eliminates them.
@@ -598,7 +598,7 @@ class Dataset:
                                         return s-j, t-k, s_str, t_str
                                     # Skip to the next student tokens batch because
                                     # teacher tokens batch is of a trucated kind
-                                    # and is reached the end.
+                                    # and has reached the end.
                                     # e.g. daphnisinasongcontest...writers. == da
                                     # 20500:20520
                                     # 82500:82550
