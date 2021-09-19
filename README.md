@@ -14,14 +14,14 @@ Improving Question Answering Performance Using Knowledge Distillation and Active
 
 - QANet (Student)
     - QANet: Combining Local Convolution with Global Self-Attention for Reading Comprehension [[arXiv: 1804.09541v1](https://arxiv.org/abs/1804.09541v1)]
-    - The model implementation is based on the [BangLiu/QANet-PyTorch](https://github.com/BangLiu/QANet-PyTorch) and [andy840314/QANet-pytorch-](https://github.com/andy840314/QANet-pytorch-) repositories.
+    - The model implementation is based on [BangLiu/QANet-PyTorch](https://github.com/BangLiu/QANet-PyTorch) and [andy840314/QANet-pytorch-](https://github.com/andy840314/QANet-pytorch-).
 - BERT (Teacher)
     - BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding [[arXiv: 1810.04805](https://arxiv.org/abs/1810.04805)]
     - [HuggingFace Transformers](https://github.com/huggingface/transformers) is used for the model implementation.
 
 ## Datasets
 
-Use `download.sh` script to download and extract the required datasets automatically.
+Use `download.sh` to download and extract the required datasets automatically.
 
 - [GloVe](https://nlp.stanford.edu/projects/glove/)
     - [glove.840B.300d.zip](https://nlp.stanford.edu/data/glove.840B.300d.zip)
